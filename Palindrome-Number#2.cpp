@@ -6,22 +6,26 @@ using namespace std;
 class Solution {
 public:
     bool isPalindrome(int x) {
-        string x_string = to_string(x);
 
-        if (x_string.size() % 2 == 0){
+        if (x < 0){
             return false;
         }
 
-        for (int i = 0; i < x_string.size(); ++i){
-            cout << x_string[i] << " ";
+        long reversedValue = 0;
+        int originalValue = x;
+
+        while (x > 0){
+            reversedValue = (reversedValue * 10) + (x % 10);
+            x /= 10;
         }
-        return true;
+
+        return reversedValue == originalValue;
     }
 };
 
 int main(){
     Solution object;
-    bool isPalindrome = object.isPalindrome(1212);
+    bool isPalindrome = object.isPalindrome(11211);
     cout << isPalindrome;
     return 0;
 }
